@@ -3,29 +3,24 @@ class Solution {
         if (n <= 2) {
             return 0;
         }
+       boolean prime[] = new boolean[n + 1];
 
-        boolean[] isPrime = new boolean[n];
-        for (int i = 3; i < n; i += 2) {
-            isPrime[i] = true;
-        }
-
-        isPrime[2] = true; 
-
-        for (int i = 3; i * i < n; i += 2) {
-            if (isPrime[i]) {
-                for (int j = i * i; j < n; j += 2 * i) {
-                    isPrime[j] = false;
-                }
+        for (int i = 0; i <= n; i++)
+            prime[i] = true;
+ 
+        for (int p = 2; p * p <= n; p++) {
+            if (prime[p] == true) {
+                for (int i = p * p; i <= n; i += p)
+                    prime[i] = false;
             }
         }
-
-        int count = 0;
-        for (int i = 2; i < n; i++) {
-            if (isPrime[i]) {
-                count++;
-            }
+        int counter=0;
+        // Print all prime numbers
+        for (int i = 2; i <n; i++) {
+            if (prime[i] == true)
+                counter++;
         }
+       return counter;
 
-        return count;
     }
 }
