@@ -6,7 +6,7 @@ class Solution {
         while (first <= last) {
             int mid = first + (last - first) / 2;
             
-            if (mid  == x / mid)
+            if (mid*mid==x)
                 return mid;
             else if (mid > x / mid) {
                 last = mid - 1;
@@ -17,4 +17,4 @@ class Solution {
         }
         return last;
     }
-}
+}                   
