@@ -2,9 +2,9 @@ class Solution {
     public int smallestDivisor(int[] nums, int threshold) {
         int low=1;
         int high=Integer.MAX_VALUE;;
-        // for(int i=0;i<nums.length;i++){
-        //     high=Math.max(nums[i],high);
-        // }
+        for(int i=0;i<nums.length;i++){
+            high=Math.max(nums[i],high);
+        }
         while(low<= high){
             int mid=low+(high-low)/2;
             if(divisor(nums,mid)<=threshold){
