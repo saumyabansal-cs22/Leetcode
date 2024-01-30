@@ -1,26 +1,26 @@
 class Solution {
-    public static int calculateTotal(int arr[],int div){
-        int ans=0;
-        int n=arr.length;
-        for(int i=0;i<n;i++){
-            ans+=Math.ceil((double)arr[i]/div);
-        }
-        return ans;
-    }
     public int smallestDivisor(int[] nums, int threshold) {
         int low=1;
-        int high=Integer.MIN_VALUE;
-        for(int ele:nums){
-            high=Math.max(high,ele);
-        }
-        while(low<=high){
-            int mid=(low+high)/2;
-            if(calculateTotal(nums,mid)<=threshold){
+        int high=Integer.MAX_VALUE;;
+        // for(int i=0;i<nums.length;i++){
+        //     high=Math.max(nums[i],high);
+        // }
+        while(low<= high){
+            int mid=low+(high-low)/2;
+            if(divisor(nums,mid)<=threshold){
                 high=mid-1;
             }else{
                 low=mid+1;
             }
         }
         return low;
+    }
+    public static int divisor(int[] nums,int mid){
+        int sum=0;
+        for(int i=0;i<nums.length;i++){
+            sum+=Math.ceil((double)nums[i]/(double)mid);
+        }
+
+        return sum;
     }
 }
