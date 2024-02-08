@@ -1,26 +1,27 @@
 class Solution {
-    public int countPrimes(int n) {
-        if (n <= 2) {
+      public static int countPrimes(int  n){
+        if (n<=2){
             return 0;
         }
-       boolean prime[] = new boolean[n + 1];
-
-        for (int i = 0; i <= n; i++)
-            prime[i] = true;
- 
-        for (int p = 2; p * p <= n; p++) {
-            if (prime[p] == true) {
-                for (int i = p * p; i <= n; i += p)
-                    prime[i] = false;
+        boolean[] prime= new boolean[n];
+        int l= prime.length;
+        prime[0]=true;
+        prime[1]=true;
+        for(int i=2;i*i<=l;i++){
+            if (prime[i]==false){
+                for(int j=2;i*j<l;j++){
+                    prime[i*j]=true;
+                }
             }
         }
-        int counter=0;
-        // Print all prime numbers
-        for (int i = 2; i <n; i++) {
-            if (prime[i] == true)
-                counter++;
-        }
-       return counter;
+        int count=0;
+        for(int i=2;i<l;i++){
+            if (prime[i]==false){
+                count++;
 
+            }
+
+        }
+        return count;
     }
 }
