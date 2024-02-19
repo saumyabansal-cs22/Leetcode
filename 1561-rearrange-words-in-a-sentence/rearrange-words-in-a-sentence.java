@@ -1,9 +1,11 @@
 class Solution {
     public String arrangeWords(String text) {
-        String[] words = text.split(" ");
-        words[0] = words[0].toLowerCase();
-        Arrays.sort(words, Comparator.comparingInt(String::length));
-        words[0] = words[0].substring(0, 1).toUpperCase() + words[0].substring(1);
-        return String.join(" ", words);
+        String[] str=text.split(" ");
+        Arrays.sort(str,(a,b)->(a.length()-b.length()));
+        String ans=str[0];
+        for(int i=1; i<str.length; i++){
+            ans+=" "+str[i];
+        }
+        return Character.toUpperCase(ans.charAt(0)) + (ans.substring(1)).toLowerCase();
     }
 }
