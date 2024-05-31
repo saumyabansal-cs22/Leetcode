@@ -18,16 +18,16 @@ class Solution {
 
         // Find the new tail: (len - k - 1)th node
         // and the new head: (len - k)th node
+        ListNode temp = getnode(head,len-1);
         ListNode newTail = getnode(head,len-k-1);
 
         ListNode newHead = newTail.next;
         newTail.next = null;
 
         // Find the end of the rotated part and connect it to the old head
-        ListNode temp = newHead;
-        while (temp.next != null) {
-            temp = temp.next;
-        }
+        // while (temp.next != null) {
+        //     temp = temp.next;
+        // }
         temp.next = head;
 
         return newHead;
