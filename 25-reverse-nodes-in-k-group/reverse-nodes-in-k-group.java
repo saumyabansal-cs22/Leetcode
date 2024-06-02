@@ -22,12 +22,12 @@ class Solution {
             }
             ListNode nn=kth_node.next;
             kth_node.next=null;
-            ListNode newh=reverse(temp);
+            reverse(temp);
             if (temp==head){
                 head=kth_node;
             }
             else{
-                prev.next=newh;
+                prev.next=kth_node;
             }
             prev=temp;
             temp=nn;
