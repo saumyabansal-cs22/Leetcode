@@ -26,11 +26,11 @@ class Solution {
         // return dp[n];
 
         //tabulation space optimised;
-
+       if (n<=1){
+        return n;
+       }
         int prev2=0;
         int prev=1;
-        if (n == 0) return prev2;
-if (n == 1) return prev; 
         int curr=0;
         for(int i=2;i<=n;i++){
             curr=prev+prev2;
