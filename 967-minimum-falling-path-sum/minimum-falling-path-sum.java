@@ -15,16 +15,21 @@ class Solution {
         for (int i = n - 2; i >= 0; i--) {
             for (int j = 0; j < m; j++) {
                 int down = dp[i + 1][j]; // Down
-                int leftDiagonal = (j > 0) ? dp[i + 1][j - 1] : Integer.MAX_VALUE; // Left Diagonal
-                int rightDiagonal = (j < m - 1) ? dp[i + 1][j + 1] : Integer.MAX_VALUE; // Right Diagonal
-                
-                dp[i][j] = matrix[i][j] + Math.min(down, Math.min(leftDiagonal, rightDiagonal));
+                 int ld = Integer.MAX_VALUE; // Default value for left diagonal
+                int rd = Integer.MAX_VALUE;
+                if (j>0) {
+                    ld = dp[i + 1][j - 1]; 
+                    }// Left Diagonal
+                if (j+1<m) {
+                    rd = dp[i + 1][j + 1];  // Right Diagonal
+            }
+                dp[i][j] = matrix[i][j] + Math.min(down, Math.min(ld, rd));
             }
         }
         
         // Find the minimum value in the first row of dp
         int ans = Integer.MAX_VALUE;
-        for (int j = 0; j < m; j++) {
+        for(int j = 0; j < m; j++) {
             ans = Math.min(ans, dp[0][j]);
         }
         
