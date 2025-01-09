@@ -8,7 +8,7 @@ class Solution {
         boolean ans=false;
         if (sum%2==0){
             Boolean[][] dp = new Boolean[n][sum/2 + 1];
-            ans= partitionsum(nums,n-1,sum/2,dp);
+            ans= partitionsum(nums,0,sum/2,dp);
         }
         return ans;
     }
@@ -17,16 +17,16 @@ class Solution {
         if (target==0){
             return true;
         }
-         if (index < 0) {             
+         if (index >= n) {             
             return false;         
         } 
         if (dp[index][target]!=null){
             return dp[index][target];
         }
-        boolean ntake= partitionsum(nums,index-1,target,dp);
+        boolean ntake= partitionsum(nums,index+1,target,dp);
         boolean take=false;
         if (target>=nums[index]){
-            take= partitionsum(nums, index-1,target-nums[index],dp);
+            take= partitionsum(nums, index+1,target-nums[index],dp);
         }
         return dp[index][target]= take || ntake;
     }
