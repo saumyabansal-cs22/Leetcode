@@ -10,7 +10,7 @@ class Solution {
         while(r<n){
             hash[s.charAt(r)-'A']++;
             maxf= Math.max(maxf,hash[s.charAt(r)-'A']);
-            if ((r-l+1)-maxf>k){
+            while ((r-l+1)-maxf>k){
                 hash[s.charAt(l)-'A']--;
                 maxf=0;
                 for(int i=0;i<26;i++){
