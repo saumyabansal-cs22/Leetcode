@@ -1,21 +1,20 @@
 class Solution {
     public int searchInsert(int[] nums, int target) {
-        int n= nums.length;
-        int[] arr= new int[n+1];
-        arr[n]=target;
-        for(int i=0;i<n;i++){
-            arr[i]=nums[i];
-        }
-        Arrays.sort(arr);
+        int left = 0;
+        int right = nums.length - 1;
 
-        int index = -1;  // default if not found
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) {
-                index = i;
-                break;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
             }
         }
-        return index;
+
+        return left;        
     }
 }
